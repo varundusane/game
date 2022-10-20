@@ -1,3 +1,4 @@
+from email.policy import default
 from django.db import models
 from django.contrib.auth.models import User
 
@@ -12,3 +13,8 @@ class Player(models.Model):
     USERNAME_FIELD = 'username'
     def __str__(self):
         return f"{self.user.username}"
+
+class Wallet(models.Model):
+    user = models.ForeignKey(User, null=True, on_delete=models.CASCADE)
+    wallet_balance = models.IntegerField(default=0,editable=True)
+    created_on = models.DateTimeField(auto_now_add=True)

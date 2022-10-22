@@ -87,7 +87,7 @@ def login_request(request):
 			if user is not None:
 				login(request, user)
 				messages.info(request, f"You are now logged in as {username}.")
-				return redirect("dashboard.html")
+				return redirect(Dashboard)
 			else:
 				messages.error(request,"Invalid username or password.")
 		else:
@@ -141,3 +141,6 @@ def login_request(request):
 
 def Dashboard(request):
     return render(request, 'dashboard.html')
+
+def Game(request):
+    return render(request, 'game.html')

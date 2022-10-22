@@ -1,4 +1,5 @@
 from email.policy import default
+from pyexpat import model
 from django.db import models
 from django.contrib.auth.models import User
 
@@ -17,4 +18,14 @@ class Player(models.Model):
 class Wallet(models.Model):
     user = models.ForeignKey(User, null=True, on_delete=models.CASCADE)
     wallet_balance = models.IntegerField(default=0,editable=True)
+    created_on = models.DateTimeField(auto_now_add=True)
+
+class Plans(models.Model):
+    plan_name = models.CharField(null=False, blank=False, max_length=25)
+    plan_price = models.IntegerField(default=0,editable=True)
+    plan_percent = models.IntegerField(default=0,editable=True)               
+
+class Profile(models.Model):
+    user = models.ForeignKey(User, null=True, on_delete=models.CASCADE)
+    plan = models.ForeignKey(Plans, null=True, on_delete=models.CASCADE)
     created_on = models.DateTimeField(auto_now_add=True)

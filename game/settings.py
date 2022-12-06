@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'player',
     'crispy_forms',
-    'bootstrapform'
+    'bootstrapform',
+    'spingame'
 ]
 
 MIDDLEWARE = [
